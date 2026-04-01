@@ -1,14 +1,16 @@
 body {
   font-family: Arial, sans-serif;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
-  background-color: #535353;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
 }
 
 h1 {
   text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 #loading {
@@ -29,22 +31,34 @@ h1 {
 }
 
 .card {
-  background-color: #1e1e1e;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 12px;
+  background: #1e293b;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 .card h3 {
   margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 .card p {
   margin-bottom: 10px;
-  color: #cccccc;
+  color: #94a3b8;
+  font-size: 0.9rem;
 }
 
 a {
   color: #38bdf8;
   text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }
