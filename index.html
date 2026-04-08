@@ -8,9 +8,26 @@
 </head>
 
 <body>
-  <p id="loading">Load hone mein samay lagta hai...</p>
-  <input type="text" id="search" placeholder="Search here for your pasandida news" />
-  <div id="news-container"></div>
+  <main class="app">
+    <header class="hero">
+      <h1>HENIX</h1>
+      <p class="subtitle">Simple Cybersecurity News Feed</p>
+      <p class="helper-text">Live stories powered by Hacker News API</p>
+    </header>
+
+    <section class="toolbar">
+      <label for="search">Search Articles</label>
+      <input
+        type="text"
+        id="search"
+        placeholder="Try keywords like phishing, ransomware, CVE..."
+      />
+      <p id="result-count">Loading articles...</p>
+    </section>
+
+    <p id="loading">Fetching latest stories...</p>
+    <div id="news-container"></div>
+  </main>
 
   <script src="index.js"></script>
 </body>

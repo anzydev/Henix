@@ -1,64 +1,219 @@
+:root {
+  --bg-top: #d9e8fb;
+  --bg-bottom: #eef4ff;
+  --panel: #ffffff;
+  --text-main: #102039;
+  --text-soft: #2f4b75;
+  --muted: #5d6f8a;
+  --border: #d7e1f0;
+  --accent: #1f71dc;
+  --accent-dark: #1658ad;
+  --shadow: 0 8px 22px rgba(16, 32, 57, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top right, #b8d5ff 0%, transparent 42%),
+    linear-gradient(180deg, var(--bg-top) 0%, #f6f9ff 55%, var(--bg-bottom) 100%);
+  color: var(--text-main);
+  min-height: 100vh;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 18px 34px;
 }
 
-#loading {
-  text-align: center;
-  margin-top: 20px;
+.hero {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  margin: 0 0 6px;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-soft);
+}
+
+.helper-text {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.toolbar {
+  margin-top: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.toolbar label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-soft);
 }
 
 #search {
   width: 100%;
-  padding: 10px;
-  margin: 20px 0;
-  border-radius: 8px;
-  border: none;
+  padding: 12px 14px;
+  border: 1px solid #b9c9e3;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(31, 113, 220, 0.16);
+}
+
+#result-count {
+  margin: 10px 2px 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+#loading {
+  margin: 18px 4px 12px;
+  color: var(--text-soft);
+  font-weight: 600;
 }
 
 #news-container {
-  margin-top: 20px;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
 }
 
 .card {
-  background: #1e293b;
-  padding: 18px;
-  margin-bottom: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
 }
+
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(17, 31, 61, 0.14);
 }
 
 .card h3 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  margin: 0 0 10px;
+  font-size: 1.08rem;
+  line-height: 1.35;
 }
 
-.card p {
-  margin-bottom: 10px;
-  color: #94a3b8;
-  font-size: 0.9rem;
+.meta {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
-a {
-  color: #38bdf8;
+.read-link {
+  margin-top: auto;
+  align-self: flex-start;
   text-decoration: none;
-  font-weight: bold;
+  color: #ffffff;
+  background: var(--accent);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
 }
 
-a:hover {
-  text-decoration: underline;
+.read-link:hover {
+  background: var(--accent-dark);
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px dashed #b7c7e0;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  color: var(--text-soft);
+  box-shadow: var(--shadow);
+}
+
+.skeleton {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.skeleton-line {
+  height: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #e7edf8 25%, #dce6f4 50%, #e7edf8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+.skeleton-line.long {
+  width: 90%;
+}
+
+.skeleton-line.medium {
+  width: 72%;
+}
+
+.skeleton-line.short {
+  width: 55%;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 18px 12px 26px;
+  }
+
+  .hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .card {
+    min-height: 170px;
+  }
 }
